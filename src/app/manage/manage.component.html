@@ -1,0 +1,201 @@
+<div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    <div class="col-sm-12 col-md-7 col-lg-7">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <h2>SmartPhone List</h2>
+          <a  class="btn btn-success" (click)="showCreate()">
+             Add Smart Phone
+          </a>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-6">
+            <div class="alert alert-success alert-dismissable" *ngIf="msg">
+              <a  class="close btn" (click)="closeAlert()">
+                &times;
+              </a>
+              {{msg}}
+            </div>
+          </div>
+      </div>        
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>IMEI</th>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Color</th>
+              <th>ImageUrl</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let smartphone of smartphones; let i = index">
+              <td>{{smartphone.imei}}</td>
+              <td>{{smartphone.brand}}</td>
+              <td>{{smartphone.model}}</td>
+              <td>{{smartphone.color}}</td>
+              <td>{{smartphone.imageUrl}}</td>
+              <td>
+                  <a (click)="editSmartPhone(i)" class="btn btn-success">
+                    Edit
+                  </a>
+                  <a (click)="deleteSmartPhone(i)" class="btn btn-danger">
+                    Delete
+                  </a>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      
+      <div class="col-sm-12 col-md-12 col-lg-12" [hidden]="!hideUpdate">
+        <h2>Create Data:</h2>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="imei" class="control-label col-sm-2">
+              IMEI
+            </label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="imei"
+                name="imei" [(ngModel)]="model.imei"
+                placeholder="Enter a New IMEI"
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="brand" class="control-label col-sm-2">
+              Brand
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="brand"
+                name="brand" [(ngModel)]="model.brand"
+                placeholder="Enter a New Brand"
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="model" class="control-label col-sm-2">
+              Model
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="model"
+                name="model" [(ngModel)]="model.model"
+                placeholder="Enter a New Model"
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="color" class="control-label col-sm-2">
+              Color
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="color"
+                name="color" [(ngModel)]="model.color"
+                placeholder="Enter a New Color"
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="imageUrl" class="control-label col-sm-2">
+              ImageUrl
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="imageUrl"
+                name="imageUrl" [(ngModel)]="model.imageUrl"
+                placeholder="Enter a New ImageUrl"
+              >
+            </div>
+          </div>
+
+    
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn btn-success" (click)="addSmartPhone()">
+                Create
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-12" [hidden]="hideUpdate">
+        
+          <h2>Update Data:</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="imei" class="control-label col-sm-2">
+                IMEI
+              </label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="imei"
+                  name="imei" [(ngModel)]="model2.imei"
+                  placeholder="Enter a New IMEI"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="brand" class="control-label col-sm-2">
+                Brand
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="brand"
+                  name="brand" [(ngModel)]="model2.brand"
+                  placeholder="Enter a New Brand"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="model" class="control-label col-sm-2">
+                Model
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="model"
+                  name="model" [(ngModel)]="model2.model"
+                  placeholder="Enter a New Model"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="color" class="control-label col-sm-2">
+                Color
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="color"
+                  name="color" [(ngModel)]="model2.color"
+                  placeholder="Enter a New Color"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="imageUrl" class="control-label col-sm-2">
+                ImageUrl
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="imageUrl"
+                  name="imageUrl" [(ngModel)]="model2.imageUrl"
+                  placeholder="Enter a New ImageUrl"
+                >
+              </div>
+            </div>
+  
+      
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-success" (click)="updateSmartPhone()">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+         
+        </div>
+      
+    </div>
+    
+
+  </div>
+</div>

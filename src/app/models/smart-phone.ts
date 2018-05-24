@@ -1,0 +1,22 @@
+export class SmartPhone {
+    imei:number;
+    brand:string;
+    model:string;
+    imageUrl:string;
+    /*battery:string;
+    processor:string;
+    ram:string;
+    storage:string;
+    screen:string;
+    resolution:string;
+    size:string;
+    weight:string;*/
+    color:string;
+    constructor(imei:number,brand:string,model:string,color:string,imageUrl:string){
+        this.imei=imei;
+        this.brand=brand;
+        this.model=model;
+        this.color=color;
+        this.imageUrl=imageUrl;
+    }
+}
